@@ -1,0 +1,43 @@
+const CACHE_NAME = 'blogger-counter-v1';
+
+const ASSETS_TO_CACHE = [
+  'https://files.catbox.moe/jy2d8v.jpeg',
+  'https://files.catbox.moe/swfw68.mp4',
+  'https://imgur.com/F3ucfLA.png',
+  'https://files.catbox.moe/umuvyb.jpeg',
+  'https://files.catbox.moe/av0bac.mp4',
+  'https://imgur.com/SgT0elO.png',
+  'https://files.catbox.moe/91jrjx.jpeg',
+  'https://files.catbox.moe/zh9gfs.mp4',
+  'https://imgur.com/cig4eDx.png',
+  'https://files.catbox.moe/27afcu.jpeg',
+  'https://files.catbox.moe/sef9hp.mp4',
+  'https://imgur.com/J1wxX9o.png',
+  'https://archive.org/download/ytdown.com-you-tube-75-kills-in-20-minutes-new-hardest-gamep-media-er-quuj-5u-3-w-0-002-720p/YTDown.com_YouTube_75-Kills-IN-20-MINUTES-NEW-HARDEST-GAMEP_Media_ErQUuj5u3W0_002_720p.mp4',
+  'https://files.catbox.moe/9hnssq.mp3',
+  'https://mp3tourl.com/audio/1787938572405-9f2a2495-4038-4fbb-90e3-05f7d7f3439d.mp3',
+  'https://mp3tourl.com/audio/1788085844814-7303e9a0-e35f-4e68-81f4-2749dc64dd61.mp3',
+  'https://mp3tourl.com/audio/1788085682047-24861455-cee6-456b-b666-463b7ff582b9.mp3'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.allSettled(
+        ASSETS_TO_CACHE.map(url => cache.add(new Request(url, { mode: 'no-cors' })))
+      );
+    })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request);
+    })
+  );
+});
