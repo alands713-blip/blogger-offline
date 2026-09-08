@@ -13,7 +13,6 @@ const ASSETS_TO_CACHE = [
   'https://files.catbox.moe/27afcu.jpeg',
   'https://files.catbox.moe/sef9hp.mp4',
   'https://imgur.com/J1wxX9o.png',
-  'https://archive.org/download/ytdown.com-you-tube-75-kills-in-20-minutes-new-hardest-gamep-media-er-quuj-5u-3-w-0-002-720p/YTDown.com_YouTube_75-Kills-IN-20-MINUTES-NEW-HARDEST-GAMEP_Media_ErQUuj5u3W0_002_720p.mp4',
   'https://files.catbox.moe/9hnssq.mp3',
   'https://mp3tourl.com/audio/1787938572405-9f2a2495-4038-4fbb-90e3-05f7d7f3439d.mp3',
   'https://mp3tourl.com/audio/1788085844814-7303e9a0-e35f-4e68-81f4-2749dc64dd61.mp3',
